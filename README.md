@@ -1,4 +1,4 @@
-Assignment Description
+Assignment Description:
 This Python program fetches data from the FBI's "Most Wanted" API or reads it from a provided JSON file. It extracts fields such as title, subjects, and field_offices and formats the data, separating fields using the lowercase thorn character þ. The program can be executed via command-line arguments to either download data from the FBI API or read it from a local file. The data is printed in the specified format.
 
 How to Install:

@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
+
 import argparse
 import sys
 import urllib.request
 import json
 
+#Function that fetches data from the API
 def fetch_data(page):
     try:
         url = f"https://api.fbi.gov/wanted/v1/list?page={page}"
@@ -18,6 +20,7 @@ def fetch_data(page):
         print(f"Error fetching data from API: {e}")
         sys.exit(1)
 
+#Function to read data from the file
 def read_file(file_location):
     try:
         with open(file_location, 'r', encoding='utf-8') as file:
@@ -27,6 +30,7 @@ def read_file(file_location):
         print(f"Error reading file: {e}")
         sys.exit(1)
 
+#Function to extract title, subjects and field_offices and format it in a thorn seperated string list
 def format_data(data):
     formatted_rows = []
     for item in data['items']:
@@ -39,6 +43,7 @@ def format_data(data):
     
     return formatted_rows
 
+#Main Function to check page/file functionality through parameters
 def main(page=None, thefile=None):
 
     if page is not None:
