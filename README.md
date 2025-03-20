@@ -1,35 +1,79 @@
-Assignment Description:
-This Python program fetches data from the FBI's "Most Wanted" API or reads it from a provided JSON file. It extracts fields such as title, subjects, and field_offices and formats the data, separating fields using the lowercase thorn character þ. The program can be executed via command-line arguments to either download data from the FBI API or read it from a local file. The data is printed in the specified format.
+# 🚔 FBI Most Wanted Data Fetcher
 
-How to Install:
-To install the package, make sure you are using pipenv to create a virtual environment and install dependencies.
+## 📌 Assignment Description
 
+This Python program fetches data from the **FBI's "Most Wanted" API** or reads it from a provided **JSON file**. It extracts essential fields such as:
+- **Title**
+- **Subjects**
+- **Field Offices**
+
+The data is then formatted, with fields separated using the **lowercase thorn character (þ)**.
+
+---
+
+## ✨ Features
+
+✅ Fetch data from the **FBI API** or a **local JSON file**  
+✅ Format the extracted fields in a structured manner  
+✅ Command-line execution for flexible usage  
+✅ Uses **spaCy NLP** for efficient text processing  
+✅ Lightweight and easy to use  
+
+---
+
+## 📥 Installation Guide
+
+Ensure you have `pipenv` installed to **create a virtual environment** and **manage dependencies**.
+
+Run the following command to set up the environment:
+
+```sh
 pipenv install -e .
 
-This will set up the environment and dependencies for the project.
+## 📜 **Functions Overview**
 
-How to Run:
-The program can be run using the following commands based on whether you want to fetch data from the FBI API or read a local JSON file:
+### **🔹 `main.py`**
+This file contains all core functions of the project.
 
-1. Fetch data from FBI API
+### 1️⃣ **`fetch_data(page)`**
+- **Purpose:** Fetches data from the **FBI API** for the given page number.
+- **Process:**
+  - Constructs the **API URL**.
+  - Makes an **HTTP request**.
+  - Returns the **JSON response** containing the "Most Wanted" criminals.
+
+### 2️⃣ **`read_file(file_location)`**
+- **Purpose:** Reads data from a **local JSON file**.
+- **Process:**
+  - Takes the **file path** as an argument.
+  - Opens the file and **parses the JSON data**.
+  - Returns the structured JSON content.
+
+### 3️⃣ **`format_data(data)`**
+- **Purpose:** Extracts and formats **specific fields** from the JSON data.
+- **Process:**
+  - Extracts **title, subjects, and field_offices** fields.
+  - Joins multiple values with **commas**.
+  - Returns a list of **rows formatted with the thorn character (þ) as a separator**.
+
+### 4️⃣ **`main(page=None, thefile=None)`**
+- **Purpose:** Controls program execution based on user input.
+- **Process:**
+  - **Decides** whether to fetch data from the **FBI API** or a **local file**.
+  - Calls the **appropriate functions** (`fetch_data` or `read_file`).
+  - Formats the output using `format_data`.
+  - Prints the **formatted data** in the specified format.
+
+## 🚀 **How to Run**
+
+The program supports **two execution modes**:
+1. **Fetch data from the FBI API**
+2. **Read data from a local JSON file**
+
+### 🔹 **Fetching Data from the FBI API**
+To fetch real-time data from the **FBI's Most Wanted API**, use the following command:
+
+```sh
 pipenv run python main.py --page <integer>
 
-2. Read from a local file
-pipenv run python main.py --file <file-location>
 
-
-Functions:
-
-main.py
-
-1. fetch_data(page)
-This function downloads data from the FBI API based on the page number provided. It constructs a URL for the API, makes an HTTP request, and returns the fetched data as a JSON object.
-
-2. read_file(file_location):
-This function reads data from a local JSON file. It takes the file location as an argument, opens the file, and returns the parsed JSON data.
-
-3. format_data(data):
-This function takes the JSON data and extracts the title, subjects, and field_offices fields. It formats these fields, joining multiple values with commas, and returns a list of rows where each field is separated by the thorn character þ.
-
-4. main(page=None, thefile=None):
-The main function handles user input to either fetch data from the API or read from a local file. It calls the appropriate functions based on the command-line arguments and prints the formatted data.
